@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "virtualDevice", "virtualDevice\virtualDevice.vcproj", "{80D44913-0414-4E46-A814-F9D43C0ABA2F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "virtualDeviceCommon", "..\virtualDeviceCommon\virtualDeviceCommon.vcproj", "{70AE14BE-BF88-48A1-A038-0F17CD1B3AF5}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "virtualButton", "..\virtualButton\virtualButton.vcproj", "{0A2C232E-6D7A-4A2A-BFE0-807DF38841A3}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testDriver", "testDriver\testDriver.vcproj", "{BFB4A0D8-E412-42E1-9530-CC3690B3D6EF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "virtualLight", "..\virtualLight\virtualLight.vcproj", "{DD85B4FF-5845-4266-9220-3B478123B8B3}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "virtualMaintainer", "..\virtualMaintainer\virtualMaintainer.vcproj", "{A05367A6-F7E3-4533-A55E-0AE45E871999}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{80D44913-0414-4E46-A814-F9D43C0ABA2F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{80D44913-0414-4E46-A814-F9D43C0ABA2F}.Debug|Win32.Build.0 = Debug|Win32
+		{80D44913-0414-4E46-A814-F9D43C0ABA2F}.Release|Win32.ActiveCfg = Release|Win32
+		{80D44913-0414-4E46-A814-F9D43C0ABA2F}.Release|Win32.Build.0 = Release|Win32
+		{70AE14BE-BF88-48A1-A038-0F17CD1B3AF5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{70AE14BE-BF88-48A1-A038-0F17CD1B3AF5}.Debug|Win32.Build.0 = Debug|Win32
+		{70AE14BE-BF88-48A1-A038-0F17CD1B3AF5}.Release|Win32.ActiveCfg = Release|Win32
+		{70AE14BE-BF88-48A1-A038-0F17CD1B3AF5}.Release|Win32.Build.0 = Release|Win32
+		{0A2C232E-6D7A-4A2A-BFE0-807DF38841A3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0A2C232E-6D7A-4A2A-BFE0-807DF38841A3}.Debug|Win32.Build.0 = Debug|Win32
+		{0A2C232E-6D7A-4A2A-BFE0-807DF38841A3}.Release|Win32.ActiveCfg = Release|Win32
+		{0A2C232E-6D7A-4A2A-BFE0-807DF38841A3}.Release|Win32.Build.0 = Release|Win32
+		{BFB4A0D8-E412-42E1-9530-CC3690B3D6EF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BFB4A0D8-E412-42E1-9530-CC3690B3D6EF}.Debug|Win32.Build.0 = Debug|Win32
+		{BFB4A0D8-E412-42E1-9530-CC3690B3D6EF}.Release|Win32.ActiveCfg = Release|Win32
+		{BFB4A0D8-E412-42E1-9530-CC3690B3D6EF}.Release|Win32.Build.0 = Release|Win32
+		{DD85B4FF-5845-4266-9220-3B478123B8B3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DD85B4FF-5845-4266-9220-3B478123B8B3}.Debug|Win32.Build.0 = Debug|Win32
+		{DD85B4FF-5845-4266-9220-3B478123B8B3}.Release|Win32.ActiveCfg = Release|Win32
+		{DD85B4FF-5845-4266-9220-3B478123B8B3}.Release|Win32.Build.0 = Release|Win32
+		{A05367A6-F7E3-4533-A55E-0AE45E871999}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A05367A6-F7E3-4533-A55E-0AE45E871999}.Debug|Win32.Build.0 = Debug|Win32
+		{A05367A6-F7E3-4533-A55E-0AE45E871999}.Release|Win32.ActiveCfg = Release|Win32
+		{A05367A6-F7E3-4533-A55E-0AE45E871999}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

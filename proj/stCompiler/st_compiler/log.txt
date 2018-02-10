@@ -1,0 +1,2 @@
+2012.09.27
+1. cancelled outputing PROG_END when approching YYEOF

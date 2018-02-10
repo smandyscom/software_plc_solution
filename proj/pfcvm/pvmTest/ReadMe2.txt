@@ -1,0 +1,1 @@
+10.22 : using Add Module To Assembly in Project Attribute to Load Dlls.

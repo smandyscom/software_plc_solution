@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "stCompiler", "st_compiler\st_compiler.vcproj", "{2A46EC3C-1F65-4300-A7D0-B0D0F09670E1}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pureStCompiler", "pureStCompiler\pureStCompiler.vcproj", "{ED0963D0-0991-4D84-9C67-70A2CAE83B05}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tester", "cooperation\cooperation.vcproj", "{401FA6AE-53EA-4D00-9938-762A0D0E6047}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "plcFoundation", "..\plcFoundation\plcFoundation.vcproj", "{441D5380-2DD9-41CB-979F-9213AA104B69}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2A46EC3C-1F65-4300-A7D0-B0D0F09670E1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2A46EC3C-1F65-4300-A7D0-B0D0F09670E1}.Debug|Win32.Build.0 = Debug|Win32
+		{2A46EC3C-1F65-4300-A7D0-B0D0F09670E1}.Release|Win32.ActiveCfg = Release|Win32
+		{2A46EC3C-1F65-4300-A7D0-B0D0F09670E1}.Release|Win32.Build.0 = Release|Win32
+		{ED0963D0-0991-4D84-9C67-70A2CAE83B05}.Debug|Win32.ActiveCfg = Debug|Win32
+		{ED0963D0-0991-4D84-9C67-70A2CAE83B05}.Debug|Win32.Build.0 = Debug|Win32
+		{ED0963D0-0991-4D84-9C67-70A2CAE83B05}.Release|Win32.ActiveCfg = Release|Win32
+		{ED0963D0-0991-4D84-9C67-70A2CAE83B05}.Release|Win32.Build.0 = Release|Win32
+		{401FA6AE-53EA-4D00-9938-762A0D0E6047}.Debug|Win32.ActiveCfg = Debug|Win32
+		{401FA6AE-53EA-4D00-9938-762A0D0E6047}.Debug|Win32.Build.0 = Debug|Win32
+		{401FA6AE-53EA-4D00-9938-762A0D0E6047}.Release|Win32.ActiveCfg = Release|Win32
+		{401FA6AE-53EA-4D00-9938-762A0D0E6047}.Release|Win32.Build.0 = Release|Win32
+		{441D5380-2DD9-41CB-979F-9213AA104B69}.Debug|Win32.ActiveCfg = Debug|Win32
+		{441D5380-2DD9-41CB-979F-9213AA104B69}.Debug|Win32.Build.0 = Debug|Win32
+		{441D5380-2DD9-41CB-979F-9213AA104B69}.Release|Win32.ActiveCfg = Release|Win32
+		{441D5380-2DD9-41CB-979F-9213AA104B69}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

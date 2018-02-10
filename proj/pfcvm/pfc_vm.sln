@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pfcvm", "pfc_vm.vcproj", "{A4691A3B-C008-4A38-994D-E67F823BC666}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "purePVM", "purePVM\purePVM.vcproj", "{456140F3-3724-41B7-BFA6-516C6BEF92D3}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "routineServices", "routineServices\routineServices.vcproj", "{4182D9C7-1274-4C98-A3EA-A19367AB777C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "routineServiceTest", "executableImage\executableImage.vcproj", "{BE934DF2-DFA6-4D41-924A-6C25DB0B4A31}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pvmTest", "pvmTest\pvmTest.vcproj", "{442847CD-1D87-46D2-8E33-975D69FAF365}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "handShakeMechanism", "handShakeMechanism\handShakeMechanism.vcproj", "{BE36351D-F1B5-43C9-AD36-5DC0A178203F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "plcFoundation", "..\plcFoundation\plcFoundation.vcproj", "{441D5380-2DD9-41CB-979F-9213AA104B69}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A4691A3B-C008-4A38-994D-E67F823BC666}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A4691A3B-C008-4A38-994D-E67F823BC666}.Debug|Win32.Build.0 = Debug|Win32
+		{A4691A3B-C008-4A38-994D-E67F823BC666}.Release|Win32.ActiveCfg = Release|Win32
+		{A4691A3B-C008-4A38-994D-E67F823BC666}.Release|Win32.Build.0 = Release|Win32
+		{456140F3-3724-41B7-BFA6-516C6BEF92D3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{456140F3-3724-41B7-BFA6-516C6BEF92D3}.Debug|Win32.Build.0 = Debug|Win32
+		{456140F3-3724-41B7-BFA6-516C6BEF92D3}.Release|Win32.ActiveCfg = Release|Win32
+		{456140F3-3724-41B7-BFA6-516C6BEF92D3}.Release|Win32.Build.0 = Release|Win32
+		{4182D9C7-1274-4C98-A3EA-A19367AB777C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4182D9C7-1274-4C98-A3EA-A19367AB777C}.Debug|Win32.Build.0 = Debug|Win32
+		{4182D9C7-1274-4C98-A3EA-A19367AB777C}.Release|Win32.ActiveCfg = Release|Win32
+		{4182D9C7-1274-4C98-A3EA-A19367AB777C}.Release|Win32.Build.0 = Release|Win32
+		{BE934DF2-DFA6-4D41-924A-6C25DB0B4A31}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BE934DF2-DFA6-4D41-924A-6C25DB0B4A31}.Debug|Win32.Build.0 = Debug|Win32
+		{BE934DF2-DFA6-4D41-924A-6C25DB0B4A31}.Release|Win32.ActiveCfg = Release|Win32
+		{BE934DF2-DFA6-4D41-924A-6C25DB0B4A31}.Release|Win32.Build.0 = Release|Win32
+		{442847CD-1D87-46D2-8E33-975D69FAF365}.Debug|Win32.ActiveCfg = Debug|Win32
+		{442847CD-1D87-46D2-8E33-975D69FAF365}.Debug|Win32.Build.0 = Debug|Win32
+		{442847CD-1D87-46D2-8E33-975D69FAF365}.Release|Win32.ActiveCfg = Release|Win32
+		{442847CD-1D87-46D2-8E33-975D69FAF365}.Release|Win32.Build.0 = Release|Win32
+		{BE36351D-F1B5-43C9-AD36-5DC0A178203F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BE36351D-F1B5-43C9-AD36-5DC0A178203F}.Debug|Win32.Build.0 = Debug|Win32
+		{BE36351D-F1B5-43C9-AD36-5DC0A178203F}.Release|Win32.ActiveCfg = Release|Win32
+		{BE36351D-F1B5-43C9-AD36-5DC0A178203F}.Release|Win32.Build.0 = Release|Win32
+		{441D5380-2DD9-41CB-979F-9213AA104B69}.Debug|Win32.ActiveCfg = Debug|Win32
+		{441D5380-2DD9-41CB-979F-9213AA104B69}.Debug|Win32.Build.0 = Debug|Win32
+		{441D5380-2DD9-41CB-979F-9213AA104B69}.Release|Win32.ActiveCfg = Release|Win32
+		{441D5380-2DD9-41CB-979F-9213AA104B69}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,107 @@
+//---------------------------------------------------------
+// FILENAME				: LDE_METADATAS.h
+// ORIGIN AYTHOR		: Hsien , 2012.05.08
+// EDITOR				: Hsien
+// NOTE					:	
+//							multi-thread use is possible
+//							Hsien ,2012.10.03s
+//---------------------------------------------------------
+#ifndef _LD_METADATAS_H
+#define _LD_METADATAS_H
+#include<stdio.h>
+
+//-------------------------
+//	META ERROR CODE DEFINITION
+//-------------------------
+#define	META_SUCCESS				0x00
+#define	META_ERR_NO_MEM				0xf1
+#define	META_ERR_UNKNOWN			0xff
+
+
+namespace metaData
+{
+	typedef struct deviceMetaData_st	DEV_METADATA;
+	typedef struct clusterMetaData_st	CLST_METADATA;
+	typedef void*	(*DUPLICATOR)(void*);							// copy-constructor
+	typedef void	(*DESTRUCTOR)(void*);
+	//----------
+	//	added by Hsien , 2012.10.01
+	//----------
+	typedef void*	(*FILEREADER)(void**		,FILE*);			// file reader prototype
+	typedef int		(*FILEWRITER)(const void*	,FILE*);			// file writer prototype
+
+	struct deviceMetaData_st
+	{
+		//-----------------------------------------------------------
+		// meta data structure used to store device's information. 
+		//	in abstract view , this data-structrue depict 'leaf'
+		//-----------------------------------------------------------
+		int		itemCode;	// how it stand for is determined by the object which importing/exporting.
+		size_t	dataSize;	// used to do data consistence checking , critical!! Hsien , 2012.07.06
+		char*	data	;
+	};
+
+	struct clusterMetaData_st
+	{
+		//------------------------------------------------------------
+		// meta data structure used to data tree's structure
+		//------------------------------------------------------------
+		DEV_METADATA	*headData;			// exclusive header data  , such as comment, number ,.... etc. (size undetermined)
+		
+		DUPLICATOR		leafDuplicator;	// used to define what leaf kind is
+		DESTRUCTOR		leafDestructor;	// used to define what leaf kind is
+		FILEWRITER		leafFileWriter;	// used to define what leaf kind is , added by Hsien , 2012.10.1
+		FILEREADER		leafFileReader;	// used to define what leaf kind is , added by Hsien , 2012.10.1
+
+		int				methodCodes;	// used to record which methods this cluster used 
+										//	, for multithead use when FILE storage/rebuilding. Hsien ,2012.10.3
+
+		size_t			dataCounts;		// leaf counts, the amount of leafs in this cluster
+		void**			dataCluster;	// array of pointer , each element is a reference of leaf
+	};
+
+	namespace	device{
+		DEV_METADATA*	initialize	();
+		 int			finalize	(DEV_METADATA		*dmds);
+		int				writeIn		(DEV_METADATA *dmds,const int itemCode,const char* data,size_t dataSize);
+		const char*		readOut		(const DEV_METADATA *dmds,int	&itemCode);
+		DEV_METADATA*	duplicate	(const DEV_METADATA* source);
+
+		int				fWrite		(const DEV_METADATA* source	,FILE*	destFile);
+		void*			fRead		(DEV_METADATA**		destBuf	,FILE*	sourceFile);
+	}
+
+	CLST_METADATA*	clstCreate(			
+		DUPLICATOR	_leafDuplicator
+		,DESTRUCTOR	_leafDestructor
+		,FILEWRITER	_leafFileWriter
+		,FILEREADER _leafFileReader
+			,const size_t dataCounts);	//	C-style namespace constructor
+
+	namespace	cluster{
+		
+		CLST_METADATA*	initialize	(
+			DUPLICATOR	_leafDuplicator
+			,DESTRUCTOR	_leafDestructor
+			,const size_t dataCounts);	// allocating array, deep or shallow , this function is going to abanduant
+										// Hsien , 2012.10.03
+
+		int		writeIn	(CLST_METADATA	*cmds
+			,const size_t dataIndex
+			,void		*elem);			// set elem in dataIndex of dataCluster
+		void*	readOut	(const CLST_METADATA	*cmds,const size_t dataIndex);	// return elem in dataIndex of dataCluster
+		/*extern*/	void	finalize(CLST_METADATA	*cmds);							// recursive finalizing: finalize this layer ,then call leafDestructor
+		/*extern*/	CLST_METADATA*	duplicate	(const CLST_METADATA* source);		// recursive duplicating: duplicating this layer , then call leafConstructor
+
+		/*extern*/	int		fWrite	(const CLST_METADATA*	source	,FILE*	destFile);
+		/*extern*/	void*	fRead	(CLST_METADATA**		destBuf	,FILE*	sourceFile);
+	}
+
+	//----------------------------------------------------------
+	//	Function <-> Code conversion function , for data storage
+	//----------------------------------------------------------
+	char	metaFunc2Code(void*	fp);
+	void*	metaCode2Func(char	code);
+}//meta data namespace	
+
+#endif

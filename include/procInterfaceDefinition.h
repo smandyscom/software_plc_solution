@@ -1,0 +1,2 @@
+#define PIC_LEVEL2	0x02
+#define PIC_LEVEL1	0x01

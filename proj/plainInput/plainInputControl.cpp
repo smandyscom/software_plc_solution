@@ -1,0 +1,204 @@
+// plain.cpp : main project file.
+
+#include "stdafx.h"
+#include "plainInputControl.h"
+
+using namespace plain;
+
+int		plainInputControl::constantPlainEdit(constPlainCodes code)
+{
+	//------------------------------------------------------
+	//	given code , switch type
+	//	preparation for robust-editing mode , of future work
+	//	Hsien , 2012.7.17
+	//------------------------------------------------------
+	System::ComponentModel::ComponentResourceManager ^res	= 
+		gcnew System::ComponentModel::ComponentResourceManager(plainInputControl::typeid);
+	//added by Hsien , 2013.03.20
+
+	switch(code){
+		case constPlainCodes::ST_HEAD:	
+			this->le->setType(VERTICE);
+			this->le->setVertice(__SHORT);
+			this->BackgroundImage = safe_cast<System::Drawing::Image^  >(res->GetObject(L"ST_HEAD"));
+			break;
+		case constPlainCodes::ST_TAIL:
+			this->le->setType(VERTICE);
+			this->le->setVertice(__SHORT);
+			this->BackgroundImage = safe_cast<System::Drawing::Image^  >(res->GetObject(L"ST_END"));
+			break;
+		case constPlainCodes::E_VERTICAL:
+			this->le->setType(EMPTY);
+			this->BackgroundImage = safe_cast<System::Drawing::Image^  >(res->GetObject(L"E_VERTICAL"));
+			break;
+		case constPlainCodes::E_TERMINAL:
+			this->le->setType(EMPTY);
+			this->BackgroundImage = safe_cast<System::Drawing::Image^	>(res->GetObject(L"E_TERMINAL"));
+		case constPlainCodes::E_NOTHING:
+			this->le->setType(EMPTY);
+			break;
+		default:
+			return 0;
+			break;
+	}
+
+	this->Size.Width /= 2;	//	half width , for constant inp plain
+	this->TabStop = false;	//  do not nevgated via tab control , Hsien , 2013.01.25
+	return 1;
+}
+
+int		plainInputControl::editablePlainInit(int* gateway)
+{
+	this->Click				+= gcnew System::EventHandler(this,&plainInputControl::addClick);
+	this->ControlAdded		+= gcnew System::Windows::Forms::ControlEventHandler(this,&plainInputControl::attachFuncsOnChild);
+
+	//-------------------------
+	//	image array preparation
+	//-------------------------
+	this->images	=	gcnew array<String^/*System::Drawing::Image^*/>(MAX_NUM_LD_ELEMENT);
+	for each(/*Image*/String^ e in this->images)
+		e = nullptr;								// reset all references , [7/30/2012 smandyscom]
+
+	//this->images[BRANCH_FORWARD_TERMINAL]			= safe_cast<System::Drawing::Image^  >(res->GetObject(L"BF_TERMINAL"));
+	//this->images[BRANCH_FORWARD_TSECTION]			= safe_cast<System::Drawing::Image^  >(res->GetObject(L"BF_TSECTION"));
+	//this->images[BRANCH_UP_FORWARD_TSECTION_TYPE1]	= safe_cast<System::Drawing::Image^  >(res->GetObject(L"BUF_T1"));
+	//this->images[BRANCH_UP_FORWARD_TSECTION_TYPE2]	= safe_cast<System::Drawing::Image^  >(res->GetObject(L"BUF_T2"));
+	//this->images[BRANCH_DOWN_TERMINAL]				= safe_cast<System::Drawing::Image^  >(res->GetObject(L"BD_TERMINAL"));
+	//this->images[BRANCH_DOWN_TSECTION]				= safe_cast<System::Drawing::Image^  >(res->GetObject(L"BD_TSECTION"));
+	//this->images[EMPTY]								= nullptr;
+
+	this->images[BRANCH_FORWARD_TERMINAL]			= "inpBfTerminal"/*"BF_TERMINAL"*/;
+	this->images[BRANCH_FORWARD_TSECTION]			= "inpBfTsection"/*"BF_TSECTION"*/;
+	this->images[BRANCH_UP_FORWARD_TSECTION_TYPE1]	= "inpBufT1"/*"BUF_T1"*/;
+	this->images[BRANCH_UP_FORWARD_TSECTION_TYPE2]	= "inpBufT2"/*"BUF_T2"*/;
+	this->images[BRANCH_DOWN_TERMINAL]				= "inpBdTerminal"/*"BD_TERMINAL"*/;
+	this->images[BRANCH_DOWN_TSECTION]				= "inpBdTsection"/*"BD_TSECTION"*/;
+	this->images[EMPTY]								= nullptr;
+
+	this->itemRequest		=	(short*)gateway;
+	this->devRequest		=	((short*)gateway+1);
+	
+	this->deviceEdit(EMPTY,0,NULL,ID_ON_REBUILD);
+	return 1;
+}
+int		plainInputControl::deviceEdit(short inpItemCode
+									  ,short verticeCode
+									  ,const char*	data
+									  ,const char	_mode /* added by Hsien , 2013.01.22*/)
+{
+	//------------------------------------------------------------------------------
+	// used to add control on itself
+	// how to identify which device the user want to add , when mouse cursor clicked
+	//
+	//	1. repeative command will be rejected
+	//------------------------------------------------------------------------------
+	//-------------
+	//	Reject Repeative Command Input
+	//-------------
+	System::ComponentModel::ComponentResourceManager ^res	= 
+		gcnew System::ComponentModel::ComponentResourceManager(plainInputControl::typeid);
+
+	if(inpItemCode == this->currentInpItemCode
+		&& verticeCode	== this->currentVerticeCode
+		&& _mode		== ID_ON_EDIT	/* condition added by Hsien , 2013.01.22 , for distinguishing*/)
+		return 0;
+	//------------
+	//	Reset this plain
+	//------------
+	this->BackgroundImage = nullptr;
+	this->Controls->Clear();
+
+	//-------------------------------------
+	//	non-EMPTY command , do further work
+	//-------------------------------------
+	this->le->setType((unsigned char)inpItemCode);
+
+	if(inpItemCode == VERTICE){		
+		this->TabStop = true;						// default: enable the Tab nevgating , Hsien , 2013.01.25
+
+		this->le->setVertice(verticeCode);			// will reset vertice data , Hsien , 2012.7.17
+		if(data != NULL)
+			this->le->importVerticeData(data);		// when data is non-null data , import it.
+
+		switch(verticeCode){
+			case NORMAL_OPEN:	this->Controls->Add(gcnew inpDev::normalOpenControl(this->le->getVertice()));			break;
+			case NORMAL_CLOSE:	this->Controls->Add(gcnew inpDev::normalCloseControl(this->le->getVertice()));			break;
+			case __SHORT:			
+				this->BackgroundImage = safe_cast<System::Drawing::Image^  >(res->GetObject("inpShort"/*L"ST"*/));	
+				this->TabStop = false;			// disable the Tab nevgating , Hsien , 2013.01.25
+				break;
+				//--------------
+				//	Timer Device , added by Hsien , 2013.01.16
+				//--------------
+			//case NONSTOP_TIMER_OUTPUT_NO:	this->Controls->Add(gcnew inpDev::nonStopTimerOutControl(this->le->getVertice()));	break;
+				//--------------
+				//	Indexer Device , added by Hsien , 2013.01.24
+				//--------------
+			case NONSTOP_TIMER_OUTPUT_NO:
+			case RING_COUNTER_OUTPUT_NO:
+			case NC_REQUEST:				// Hsien 2013/5/22
+				this->Controls->Add(gcnew inpDev::indexerOutControl(this->le->getVertice()));		break;
+				//----------------------
+				//	Comparator	// Hsien 2013/5/17
+				//----------------------
+			case COMPARATOR:
+				this->Controls->Add(gcnew inpDev::comparatorControl(this->le->getVertice()));		break;								break;
+			default:
+				break;
+		}
+	}
+	else{
+//		this->BackgroundImage = this->images[inpItemCode];
+		if(this->images[inpItemCode] != nullptr)
+			this->BackgroundImage = safe_cast<System::Drawing::Image^  >(res->GetObject(this->images[inpItemCode]));
+		else
+			this->BackgroundImage = nullptr;
+		this->TabStop = false;			// disable the Tab nevgating , Hsien , 2013.01.25
+	}
+
+	this->currentInpItemCode = inpItemCode;		// updata current status
+	this->currentVerticeCode = verticeCode;
+
+	return 1;
+}
+int		plainInputControl::store	(DEV_METADATA		**imds)
+{
+	//-------------------
+	//	fill in meta data
+	//-------------------
+	if(*imds != NULL){
+		finalize(*imds);
+		*imds = NULL;
+	}
+	*imds = initialize();
+
+	if(writeIn(*imds
+		,this->le->exportData()				// elem code indicator
+		,this->le->exportVerticeData()) != META_SUCCESS)	// the content of vertice data , if it is vertice
+	{
+		return 0;		// write-in fail
+	}
+
+	return 1;
+}
+
+int		plainInputControl::rebuild	(const DEV_METADATA	*imds)
+{
+	//---------------------------------------------------
+	//	rebuild this plain by meta data
+	//---------------------------------------------------
+	int			impCode;
+	size_t		dataSize;
+
+	ldElement	tmp;
+	char*		data;
+
+	data = (char*)readOut((DEV_METADATA*)imds
+		,impCode
+		,dataSize);					// Hsien  , 2013.04.19
+	if(!tmp.importData(impCode))	// have to decoding raw code via ldElement
+		return 0;
+	if(!this->deviceEdit(tmp.getType(),tmp.getVerticeType(),data,ID_ON_REBUILD))
+		return 0;		// explictly hard-coded impCode's format
+	return 1;
+}

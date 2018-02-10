@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testDriver", "testDriver\testDriver.vcproj", "{77E46F77-251D-4F4A-BAF3-754B7F95FBE5}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pfcvm", "..\pfcvm\pfc_vm.vcproj", "{A4691A3B-C008-4A38-994D-E67F823BC666}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "plcFoundation", "..\plcFoundation\plcFoundation.vcproj", "{441D5380-2DD9-41CB-979F-9213AA104B69}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		release_cus|Win32 = release_cus|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{77E46F77-251D-4F4A-BAF3-754B7F95FBE5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{77E46F77-251D-4F4A-BAF3-754B7F95FBE5}.Debug|Win32.Build.0 = Debug|Win32
+		{77E46F77-251D-4F4A-BAF3-754B7F95FBE5}.release_cus|Win32.ActiveCfg = Release|Win32
+		{77E46F77-251D-4F4A-BAF3-754B7F95FBE5}.release_cus|Win32.Build.0 = Release|Win32
+		{77E46F77-251D-4F4A-BAF3-754B7F95FBE5}.Release|Win32.ActiveCfg = Release|Win32
+		{77E46F77-251D-4F4A-BAF3-754B7F95FBE5}.Release|Win32.Build.0 = Release|Win32
+		{A4691A3B-C008-4A38-994D-E67F823BC666}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A4691A3B-C008-4A38-994D-E67F823BC666}.Debug|Win32.Build.0 = Debug|Win32
+		{A4691A3B-C008-4A38-994D-E67F823BC666}.release_cus|Win32.ActiveCfg = release_cus|Win32
+		{A4691A3B-C008-4A38-994D-E67F823BC666}.release_cus|Win32.Build.0 = release_cus|Win32
+		{A4691A3B-C008-4A38-994D-E67F823BC666}.Release|Win32.ActiveCfg = Release|Win32
+		{A4691A3B-C008-4A38-994D-E67F823BC666}.Release|Win32.Build.0 = Release|Win32
+		{441D5380-2DD9-41CB-979F-9213AA104B69}.Debug|Win32.ActiveCfg = Debug|Win32
+		{441D5380-2DD9-41CB-979F-9213AA104B69}.Debug|Win32.Build.0 = Debug|Win32
+		{441D5380-2DD9-41CB-979F-9213AA104B69}.release_cus|Win32.ActiveCfg = release_cus|Win32
+		{441D5380-2DD9-41CB-979F-9213AA104B69}.release_cus|Win32.Build.0 = release_cus|Win32
+		{441D5380-2DD9-41CB-979F-9213AA104B69}.Release|Win32.ActiveCfg = Release|Win32
+		{441D5380-2DD9-41CB-979F-9213AA104B69}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

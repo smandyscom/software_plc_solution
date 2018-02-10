@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libld", "libld.vcproj", "{2249E7FE-DC0F-491E-9C0F-F3A653928D5B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ld2graph", "ld2graph\ld2graph.vcproj", "{DC67AEB9-370E-42D8-BA22-DDF7A2D0C0F6}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "spMerge", "spDataMerge\spDataMerge.vcproj", "{29D2C1B6-8666-4B39-B35B-163AF141407F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "spmerge_expr", "spmerge_expr\spmerge_expr.vcproj", "{CC4A39FD-E180-4339-8A93-654F101C1D22}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "outputBase", "outputBase\outputBase.vcproj", "{8DBA0166-36B4-4E1D-95D8-D8A07EEC1C48}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "metaDataTest", "metaDataTest\metaDataTest.vcproj", "{CB63BFFC-A174-4884-9940-A233C591EBDE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2249E7FE-DC0F-491E-9C0F-F3A653928D5B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2249E7FE-DC0F-491E-9C0F-F3A653928D5B}.Debug|Win32.Build.0 = Debug|Win32
+		{2249E7FE-DC0F-491E-9C0F-F3A653928D5B}.Release|Win32.ActiveCfg = Release|Win32
+		{2249E7FE-DC0F-491E-9C0F-F3A653928D5B}.Release|Win32.Build.0 = Release|Win32
+		{DC67AEB9-370E-42D8-BA22-DDF7A2D0C0F6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DC67AEB9-370E-42D8-BA22-DDF7A2D0C0F6}.Debug|Win32.Build.0 = Debug|Win32
+		{DC67AEB9-370E-42D8-BA22-DDF7A2D0C0F6}.Release|Win32.ActiveCfg = Release|Win32
+		{DC67AEB9-370E-42D8-BA22-DDF7A2D0C0F6}.Release|Win32.Build.0 = Release|Win32
+		{29D2C1B6-8666-4B39-B35B-163AF141407F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{29D2C1B6-8666-4B39-B35B-163AF141407F}.Debug|Win32.Build.0 = Debug|Win32
+		{29D2C1B6-8666-4B39-B35B-163AF141407F}.Release|Win32.ActiveCfg = Release|Win32
+		{29D2C1B6-8666-4B39-B35B-163AF141407F}.Release|Win32.Build.0 = Release|Win32
+		{CC4A39FD-E180-4339-8A93-654F101C1D22}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CC4A39FD-E180-4339-8A93-654F101C1D22}.Debug|Win32.Build.0 = Debug|Win32
+		{CC4A39FD-E180-4339-8A93-654F101C1D22}.Release|Win32.ActiveCfg = Release|Win32
+		{CC4A39FD-E180-4339-8A93-654F101C1D22}.Release|Win32.Build.0 = Release|Win32
+		{8DBA0166-36B4-4E1D-95D8-D8A07EEC1C48}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8DBA0166-36B4-4E1D-95D8-D8A07EEC1C48}.Debug|Win32.Build.0 = Debug|Win32
+		{8DBA0166-36B4-4E1D-95D8-D8A07EEC1C48}.Release|Win32.ActiveCfg = Release|Win32
+		{8DBA0166-36B4-4E1D-95D8-D8A07EEC1C48}.Release|Win32.Build.0 = Release|Win32
+		{CB63BFFC-A174-4884-9940-A233C591EBDE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CB63BFFC-A174-4884-9940-A233C591EBDE}.Debug|Win32.Build.0 = Debug|Win32
+		{CB63BFFC-A174-4884-9940-A233C591EBDE}.Release|Win32.ActiveCfg = Release|Win32
+		{CB63BFFC-A174-4884-9940-A233C591EBDE}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

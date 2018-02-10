@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ldeSimulator", "ldeVarWatch\ldeVarWatch.vcproj", "{9DC19A44-572E-4268-B707-86D93B70BEB0}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pfcvm", "..\pfcvm\pfc_vm.vcproj", "{A4691A3B-C008-4A38-994D-E67F823BC666}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tester", "tester\tester.vcproj", "{B631AD7F-A7BD-40F4-A3CD-62EE86E76452}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9DC19A44-572E-4268-B707-86D93B70BEB0}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9DC19A44-572E-4268-B707-86D93B70BEB0}.Debug|Win32.Build.0 = Debug|Win32
+		{9DC19A44-572E-4268-B707-86D93B70BEB0}.Release|Win32.ActiveCfg = Release|Win32
+		{9DC19A44-572E-4268-B707-86D93B70BEB0}.Release|Win32.Build.0 = Release|Win32
+		{A4691A3B-C008-4A38-994D-E67F823BC666}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A4691A3B-C008-4A38-994D-E67F823BC666}.Debug|Win32.Build.0 = Debug|Win32
+		{A4691A3B-C008-4A38-994D-E67F823BC666}.Release|Win32.ActiveCfg = Release|Win32
+		{A4691A3B-C008-4A38-994D-E67F823BC666}.Release|Win32.Build.0 = Release|Win32
+		{B631AD7F-A7BD-40F4-A3CD-62EE86E76452}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B631AD7F-A7BD-40F4-A3CD-62EE86E76452}.Debug|Win32.Build.0 = Debug|Win32
+		{B631AD7F-A7BD-40F4-A3CD-62EE86E76452}.Release|Win32.ActiveCfg = Release|Win32
+		{B631AD7F-A7BD-40F4-A3CD-62EE86E76452}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

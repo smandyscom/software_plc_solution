@@ -1,0 +1,131 @@
+static	char						isInit		= 0;	// indicate whether pvm initialized
+static	size_t						timeBase	= 0;	// in mini-second(ms)
+static	size_t						procCounts	= 0;	// how many process PVM is running
+static	struct procContext_st		*procs		= NULL;				//	
+
+
+int	pvmInitialize(const size_t	_procCounts,const size_t _timeBase)
+{
+	//---------------------------------------------
+	//	allocating memory for loading process
+	//	and assign time base value
+	//	return false if memory allocating fail
+	//---------------------------------------------
+	procs = 
+		(PROC_CONTEXT*)malloc(_procCounts * sizeof(PROC_CONTEXT));
+	if(!procs)
+		return 0;					// memory exhausted
+	procCounts = _procCounts;		// allocating success , recording.
+	memset(procs,0,procCounts * sizeof(PROC_CONTEXT));
+
+	timeBase = _timeBase;
+
+	isInit = 1;				// mark
+	return 1;
+}
+
+int pvmFinalize(void)
+{
+	//---------------------------------------
+	//	1. umount all procs
+	//	2. deallocting all process context
+	//	3. set zero for all control variable
+	//	4. unmark isInitialized flag
+	//---------------------------------------
+
+	for(size_t i=0;i<procCounts;i++)
+		pvmProcUnmount(i);
+	free(procs);
+
+	procs			= NULL;
+	procCounts		= 0;
+	timeBase		= 0;
+
+	isInit			= 0;
+
+	return 1;
+}
+int	pvmProcMount(const size_t	procId,
+				const size_t	timeInterval,
+				void*			instruction,
+				const size_t	instructionCounts)
+{
+	
+	
+	//----------------------------------------------------------------
+	//
+	//	finally marked corresponding process context in MOUNTED
+	//	behavior: override if target process context has been occupied
+	//
+	//		do final stage security check of instruction check
+	//			on construction so far , Hsien , 2012.06.27
+	//----------------------------------------------------------------
+	PROC_CONTEXT*	proc;
+
+	if(procId > procCounts-1)
+		return 0;					// over indexed , procId is equivalent to index of procs array
+
+	proc = &procs[procId];
+
+	memset(proc,0,sizeof(PROC_CONTEXT));
+	proc->timeInterval			=	timeInterval;
+	proc->instruction			=	instruction;
+	proc->instructionCounts		=	instructionCounts;
+
+//	proc->isMounted = 1;
+
+	return 1;
+}
+int pvmProcUnmount(const size_t	procId)
+{
+	return 1;
+}
+
+int pvmTickRun(void/*dwellHandler dh*/)
+{
+	//-------------------------------------------------------------------
+	//	Run Process if timer ticked
+	//		concidering about if added dwellHandler for call-back funtion
+	//		used to handle , if dwell occurs.
+	//-------------------------------------------------------------------
+	static size_t		i;
+	static PROC_CONTEXT	*proc;
+
+	//----------------------
+	//	Run Routine Service
+	//----------------------
+
+	//----------------------------------------
+	//	Scan INHIBIT signal table periodically
+	//----------------------------------------
+
+	//-----------------------------------------------
+	// if DEBUG MODE , do handshake	with signal table
+	//-----------------------------------------------
+
+	for(i=0;i<procCounts;i++){
+		proc = &procs[i];
+
+		proc->timeRunningValue += timeBase;
+		//-----------------------------------
+		//	execute instruction if time comes
+		//-----------------------------------
+		if(proc->timeRunningValue == proc->timeInterval){
+			procRun(proc);
+			proc->timeRunningValue = 0;									// reset timer
+		}//time comes
+	}// scanning/running
+
+	return 1;	
+}
+
+int pvmAllRun(void)
+{
+	//-------------------------
+	//	run all process at Once
+	//-------------------------
+	for(size_t i=0;i<procCounts;i++)
+			procRun(&procs[i]);
+
+	return 1;
+}

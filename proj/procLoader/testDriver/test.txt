@@ -1,0 +1,8 @@
+#this is comment
+DIR=
+
+[1]		C:\Users\smandyscom\Desktop\irc_codes\test.irc 2324
+[2]		C:\Users\smandyscom\Desktop\irc_codes\test.irc 3423
+[3]		C:\Users\smandyscom\Desktop\irc_codes\test.irc random
+[4]		C:\Users\smandyscom\Desktop\irc_codes\test.irc 2434
+#this is comment

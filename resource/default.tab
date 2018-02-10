@@ -1,0 +1,23 @@
+#Comment
+#PVM Loading Tab Second Form , 2.Dec.2013 , Hsien 
+#	1. Line starting with "#" would be considered as comment
+#	2. Blank line is acceptable.
+#	3. For the line is different from above description , would be considered as command line
+#		and should follow the format: IRCFILENAME	LEVEL SLOT.
+#		LEVEL column is used to indicate IRC's running level , 0 as LEVEL1 , 1 as LEVEL2 .
+#		SLOT  column is used to indicate IRC's running slot in certain running level , index starting from ZERO
+#		the amount of SLOT for each LEVEL is setted to 10 , so that you do not set SLOT over 9.
+
+#IRCFILENAME					LEVEL		SLOT
+Example1_running_light.irc				0		0
+#Example1_X_Y_MX_MY.irc				0		0
+#Example2_KeepRelay.irc				0		1
+#Example3_Counter_With_Comparator.irc			0		2		
+#Example4_NC_Comunication.irc				0		3
+#Example5_CounterCountType2_With_Comparator.irc		0		4
+#Example6_Long_Term_Timer.irc				0		5
+#Example7_Parallel_Type2.irc				0		6
+#Example8_Constant_Negation.irc			0		7
+#Example9_Timer_Set_Reset.irc				0		8
+#Example10_LV1_Counter.irc				0		9
+#Example10_LV2_Counter.irc				1		0
